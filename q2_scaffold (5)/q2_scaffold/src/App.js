@@ -32,7 +32,14 @@ class App extends Component {
     };
   }
 
-  // Create function to remove person from your network here
+  
+
+  handleClick = (i) => {
+    const network = [...this.state.network];
+    network[i].show = false;
+    this.setState({ network });
+  };
+
 
   render() {
     return (
@@ -40,8 +47,8 @@ class App extends Component {
         <h1>My Network</h1>
         <div className="list">
           {this.state.network.map((p, i) => (
-            <Person key={i} person={p} index={i} />
-          ))}
+            p.show&& (<Person key={i} person={p} index={i} handleClick={this.handleClick}/>
+          )))}
         </div>
       </div>
     );
